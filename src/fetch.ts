@@ -1,6 +1,4 @@
-import fetch from "node-fetch";
-
-export const postJson = (url: string, data: any, params: any = {}) => {
+export const postJson = (url: string, data: any, params: any = {}): Promise<Response> => {
 	return fetch(url, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
@@ -9,7 +7,7 @@ export const postJson = (url: string, data: any, params: any = {}) => {
 	});
 };
 
-export const get = (url: string, query?: any, params: any = {}) => {
+export const get = (url: string, query?: any, params: any = {}): Promise<Response> => {
 	if (query && Object.keys(query).length > 0) {
 		url += "?" + new URLSearchParams(query).toString();
 	}
